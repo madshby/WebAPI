@@ -29,7 +29,7 @@ namespace PetShop.EFCore.Repositories
         public Insurance CreateInsurance(Insurance insurance)
         {
             
-            var entity = _ctx.Add(new Insurance{
+            var entity = _ctx.Add(new InsuranceEntity(){
                 Name = insurance.Name,
                 Price = insurance.Price
             }).Entity;
