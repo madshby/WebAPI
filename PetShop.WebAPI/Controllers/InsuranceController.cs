@@ -32,5 +32,11 @@ namespace PetShop.WebAPI.Controllers
                 return StatusCode(500, "You fucked up son");
             }
         }
+
+        [HttpPost]
+        public ActionResult<Insurance> Create([FromBody] Insurance insurance)
+        {
+            return Ok(_insuranceService.CreateInsurance(insurance));
+        }
     }
 }

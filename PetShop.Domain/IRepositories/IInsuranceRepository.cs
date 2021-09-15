@@ -5,5 +5,6 @@ namespace PetShop.Domain.IRepositories
     public interface IInsuranceRepository
     {
         Insurance GetById(int id);
+        Insurance CreateInsurance(Insurance insurance);
     }
 }
