@@ -1,4 +1,5 @@
-﻿using PetShop.Core.Models;
+﻿using System.Collections.Generic;
+using PetShop.Core.Models;
 
 namespace PetShop.Domain.IRepositories
 {
@@ -6,5 +7,8 @@ namespace PetShop.Domain.IRepositories
     {
         Insurance GetById(int id);
         Insurance CreateInsurance(Insurance insurance);
+        List<Insurance> ReadAll();
+        string DeleteInsuranceById(int id);
+        Insurance UpdateInsurance(Insurance insurance);
     }
 }

@@ -1,4 +1,5 @@
-﻿using PetShop.Core.IServices;
+﻿using System.Collections.Generic;
+using PetShop.Core.IServices;
 using PetShop.Core.Models;
 using PetShop.Domain.IRepositories;
 
@@ -21,6 +22,21 @@ namespace PetShop.Domain.Services
         public Insurance CreateInsurance(Insurance insurance)
         {
             return _insuranceRepository.CreateInsurance(insurance);
+        }
+
+        public List<Insurance> ReadAll()
+        {
+            return _insuranceRepository.ReadAll();
+        }
+
+        public string DeleteInsuranceById(int id)
+        {
+            return _insuranceRepository.DeleteInsuranceById(id);
+        }
+
+        public Insurance PutInsurance(Insurance insurance)
+        {
+            return _insuranceRepository.UpdateInsurance(insurance);
         }
     }
 }

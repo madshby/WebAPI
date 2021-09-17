@@ -36,7 +36,60 @@ namespace PetShop.WebAPI.Controllers
         [HttpPost]
         public ActionResult<Insurance> Create([FromBody] Insurance insurance)
         {
-            return Ok(_insuranceService.CreateInsurance(insurance));
+            try
+            {
+                return Ok(_insuranceService.CreateInsurance(insurance));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "You fucked up son");
+            }
         }
+
+        [HttpGet]
+        public ActionResult<List<Insurance>> ReadAllInsurance()
+        {
+            try
+            {
+                return Ok(_insuranceService.ReadAll());
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "You fucked up son");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<string> DeleteInsurance(int id)
+        {
+            try
+            {
+                return Ok(_insuranceService.DeleteInsuranceById(id));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "You Fucked up Son");
+            }
+        }
+        
+        [HttpPut("{id}")]
+
+        public ActionResult<Insurance> PutInsurance(int id, [FromBody] Insurance insurance)
+        {
+            try
+            {
+                if (id != insurance.Id)
+                {
+                    return BadRequest("ID must match param id");
+                }
+
+                return Ok(_insuranceService.PutInsurance(insurance));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "You Fucked up Son");
+            }
+        }
+
     }
 }
