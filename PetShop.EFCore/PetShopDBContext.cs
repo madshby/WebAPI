@@ -12,11 +12,11 @@ namespace PetShop.EFCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<InsuranceEntity>()
-                .HasData(new InsuranceEntity() {Id = 1, Name = "AlphaInsurance", Price = 22});
+                .HasData(new InsuranceEntity() {Id = 1, Name = "BasicInsurance", Price = 99});
             modelBuilder.Entity<InsuranceEntity>()
-                .HasData(new InsuranceEntity() {Id = 2, Name = "BetaInsurance", Price = 222});
+                .HasData(new InsuranceEntity() {Id = 2, Name = "PremiumInsurance", Price = 999});
             modelBuilder.Entity<InsuranceEntity>()
-                .HasData(new InsuranceEntity() {Id = 3, Name = "GammaInsurance", Price = 2222});
+                .HasData(new InsuranceEntity() {Id = 3, Name = "ProInsurance", Price = 9999});
         }
     }
 }

@@ -30,17 +30,17 @@ namespace PetShop.Infrastructure.Data.Repositories
             };
             PetType goat = new PetType
             {
-                Name = "Goat",
+                Name = "Hippo",
                 Id = 3
             };
             PetType snake = new PetType
             {
-                Name = "Snake",
+                Name = "Bird",
                 Id = 4
             };
             PetType bird = new PetType
             {
-                Name = "Bird",
+                Name = "Reptile",
                 Id = 5
             };
             Pet pet1 = new Pet()

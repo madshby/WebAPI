@@ -29,7 +29,7 @@ namespace PetShop.WebAPI.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, "You fucked up son");
+                return StatusCode(500, "Unexpected Error");
             }
         }
 
@@ -42,7 +42,7 @@ namespace PetShop.WebAPI.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, "You fucked up son");
+                return StatusCode(500, "Unexpected Error");
             }
         }
 
@@ -55,7 +55,7 @@ namespace PetShop.WebAPI.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, "You fucked up son");
+                return StatusCode(500, "Unexpected Error");
             }
         }
 
@@ -68,7 +68,7 @@ namespace PetShop.WebAPI.Controllers
             }
             catch (Exception e)
             {
-                return StatusCode(500, "You Fucked up Son");
+                return StatusCode(500, "Unexpected Error");
             }
         }
         
@@ -80,14 +80,14 @@ namespace PetShop.WebAPI.Controllers
             {
                 if (id != insurance.Id)
                 {
-                    return BadRequest("ID must match param id");
+                    return BadRequest("ID must match the expected ID");
                 }
 
                 return Ok(_insuranceService.PutInsurance(insurance));
             }
             catch (Exception e)
             {
-                return StatusCode(500, "You Fucked up Son");
+                return StatusCode(500, "Unexpected Error");
             }
         }
 

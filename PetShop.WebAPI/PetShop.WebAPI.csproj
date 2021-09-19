@@ -17,4 +17,10 @@
       <ProjectReference Include="..\PetShop.Infrastructure.Data\PetShop.Infrastructure.Data.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DTO\Insurances" />
+      <Folder Include="DTO\Owners" />
+      <Folder Include="DTO\Pets" />
+    </ItemGroup>
+
 </Project>

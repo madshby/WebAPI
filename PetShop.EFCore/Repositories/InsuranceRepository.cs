@@ -59,7 +59,7 @@ namespace PetShop.EFCore.Repositories
             _ctx.Remove(new InsuranceEntity{Id = id});
             _ctx.SaveChanges();
 
-            return "Deleted?";
+            return "Deleted";
         }
 
         public Insurance UpdateInsurance(Insurance insurance)

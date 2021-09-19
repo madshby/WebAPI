@@ -16,7 +16,7 @@ namespace PetShop.Infrastructure.Data.Repositories
             Owner owner1 = new Owner()
             {
                 Id = OwnerId,
-                Name = "Den Hvide Mester"
+                Name = "McLovin"
             };
             CreateOwner(owner1);
         }
