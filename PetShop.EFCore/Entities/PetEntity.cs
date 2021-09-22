@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PetShop.Core.Models;
 
 namespace PetShop.EFCore.Entities
@@ -14,5 +15,10 @@ namespace PetShop.EFCore.Entities
         public double Price{ get; set; }
         public InsuranceEntity Insurance { get; set; }
         public int InsuranceId { get; set; }
+        public int OwnerId { get; set; } 
+        public OwnerEntity Owner { get; set; }
+        public List<OwnerEntity> Owners { get; set; }
+        
+        
     }
 }

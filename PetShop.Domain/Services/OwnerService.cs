@@ -16,7 +16,7 @@ namespace PetShop.Domain.Services
 
         public List<Owner> GetAllOwners()
         {
-            return _repo.GetAllOwner();
+            return _repo.GetAllOwners();
         }
 
         public Owner CreateOwner(Owner owner)
@@ -24,9 +24,9 @@ namespace PetShop.Domain.Services
             return _repo.CreateOwner(owner);
         }
 
-        public string DeleteOwner(int ownerid)
+        public string DeleteOwner(int ownerId)
         {
-            return _repo.DeleteOwner(ownerid);
+            return _repo.DeleteOwner(ownerId);
         }
 
         public Owner UpdatePetOwner(Owner owner)

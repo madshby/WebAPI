@@ -7,7 +7,7 @@ namespace PetShop.Core.IServices
     {
         List<Owner> GetAllOwners();
         Owner CreateOwner(Owner owner);
-        string DeleteOwner(int ownerid);
+        string DeleteOwner(int ownerId);
         Owner UpdatePetOwner(Owner owner);
     }
 }

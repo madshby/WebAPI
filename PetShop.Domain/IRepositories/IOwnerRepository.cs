@@ -5,9 +5,9 @@ namespace PetShop.Domain.IRepositories
 {
     public interface IOwnerRepositories
     {
-        List<Owner> GetAllOwner();
+        List<Owner> GetAllOwners();
         Owner CreateOwner(Owner owner);
-        string DeleteOwner(int ownerid);
+        string DeleteOwner(int ownerId);
         Owner UpdateOwner(Owner owner);
     }
 }

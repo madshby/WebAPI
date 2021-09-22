@@ -1,49 +1,68 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PetShop.Core.Models;
 using PetShop.Domain.IRepositories;
+using PetShop.EFCore.Entities;
 
 namespace PetShop.EFCore.Repositories
 {
-    public class OwnerRepository1 : IOwnerRepositories
+    public class OwnerRepository : IOwnerRepositories
     {
-        private readonly PetShopDBContext _ctx;
+        private readonly PetShopDbContext _ctx;
 
-        public OwnerRepository1(PetShopDBContext ctx)
+        public OwnerRepository(PetShopDbContext ctx)
         {
             _ctx = ctx;
         }
         
-       public List<Owner> GetAllOwner()
-        {
-          //  return _ctx.Pets
-            //    .Select(pet => new Pet()
-              //  {
-               //     Id = pet.Id,
-                //    Name = pet.Name,
-                 //   Type = pet.Type,
-                  //  BirthDate = pet.BirthDate,
-                  //  SoldDate = pet.SoldDate,
-                   // Color = pet.Color,
-                   // Price = pet.Price
-               // })
-              //  .ToList();
-              throw new NotImplementedException();
-        }
+       public List<Owner> GetAllOwners()
+       {
+           return _ctx.Owners
+               .Select(owner => new Owner()
+               {
+                   Id = owner.Id,
+                   Name = owner.Name
+               })
+               .ToList();
+       }
 
         public Owner CreateOwner(Owner owner)
         {
-            throw new System.NotImplementedException();
+            var entity = _ctx.Add(new OwnerEntity()
+            {
+                Name = owner.Name
+            }).Entity;
+            _ctx.SaveChanges();
+            return new Owner()
+            {
+                Id = entity.Id,
+                Name = entity.Name
+            };
         }
 
-        public string DeleteOwner(int ownerid)
+        public string DeleteOwner(int ownerId)
         {
-            throw new System.NotImplementedException();
+            _ctx.Remove(new Owner {Id = ownerId});
+            _ctx.SaveChanges();
+
+            return "Deleted";
         }
 
         public Owner UpdateOwner(Owner owner)
         {
-            throw new System.NotImplementedException();
+            var ownerEntity = new OwnerEntity()
+            {
+                Id = owner.Id,
+                Name = owner.Name
+            };
+            var entity = _ctx.Update(ownerEntity).Entity;
+            _ctx.SaveChanges();
+            return new Owner()
+            {
+                Id = entity.Id,
+                Name = entity.Name
+            };
         }
     }
 }

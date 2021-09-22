@@ -17,7 +17,7 @@ namespace PetShop.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Owner>> getAllOwner()
+        public ActionResult<List<Owner>> GetAllOwner()
         {
             return Ok(_ownerService.GetAllOwners());
         }

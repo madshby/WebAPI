@@ -17,7 +17,6 @@ using PetShop.Domain.IRepositories;
 using PetShop.Domain.Services;
 using PetShop.EFCore;
 using PetShop.EFCore.Repositories;
-using PetShop.Infrastructure.Data.Repositories;
 
 namespace PetShop.WebAPI
 {
@@ -40,7 +39,7 @@ namespace PetShop.WebAPI
             });
 
             var loggerFactory = LoggerFactory.Create(builder => { builder.AddConsole();});
-            services.AddDbContext<PetShopDBContext>(
+            services.AddDbContext<PetShopDbContext>(
                 options =>
                 {
                     options
@@ -48,7 +47,7 @@ namespace PetShop.WebAPI
                         .UseSqlite("Data Source=PetShop.db");
                 });
             
-            services.AddScoped<IPetRepositories, PetShopRepository>();
+            services.AddScoped<IPetRepositories, PetRepository>();
             services.AddScoped<IPetService, PetService>();
             services.AddScoped<IOwnerRepositories, OwnerRepository>();
             services.AddScoped<IOwnerService, OwnerService>();
@@ -66,7 +65,7 @@ namespace PetShop.WebAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PetShop.WebAPI v1"));
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
-                    var ctx = scope.ServiceProvider.GetService<PetShopDBContext>();
+                    var ctx = scope.ServiceProvider.GetService<PetShopDbContext>();
                     ctx.Database.EnsureDeleted();
                     ctx.Database.EnsureCreated();
                 }

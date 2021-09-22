@@ -8,9 +8,9 @@ namespace PetShop.EFCore.Repositories
 {
     public class InsuranceRepository : IInsuranceRepository
     {
-        private readonly PetShopDBContext _ctx;
+        private readonly PetShopDbContext _ctx;
 
-        public InsuranceRepository(PetShopDBContext ctx)
+        public InsuranceRepository(PetShopDbContext ctx)
         {
             _ctx = ctx;
         }

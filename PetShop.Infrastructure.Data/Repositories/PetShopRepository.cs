@@ -10,7 +10,7 @@ namespace PetShop.Infrastructure.Data.Repositories
     public class PetShopRepository : IPetRepositories, IPetTypeRepositories
     {
         private static List<Pet> _petTable = new List<Pet>();
-        private string deletedPetName;
+        private string _deletedPetName;
 
         private static int _petId = 1;
 
@@ -130,26 +130,26 @@ namespace PetShop.Infrastructure.Data.Repositories
                 if (petId == pet.Id)
                 {
                     _petTable.Remove(pet);
-                    deletedPetName = pet.Name;
+                    _deletedPetName = pet.Name;
                 }
             }
-            return deletedPetName;
+            return _deletedPetName;
         }
 
         public Pet UpdatePet(Pet pet)
         {
-            var PetToUpdate = _petTable.FirstOrDefault(p => p.Id == pet.Id);
-            if (PetToUpdate != null)
+            var petToUpdate = _petTable.FirstOrDefault(p => p.Id == pet.Id);
+            if (petToUpdate != null)
             {
-                PetToUpdate.Name = pet.Name;
-                PetToUpdate.Type = pet.Type;
-                PetToUpdate.BirthDate = pet.BirthDate;
-                PetToUpdate.SoldDate = pet.SoldDate;
-                PetToUpdate.Color = pet.Color;
-                PetToUpdate.Price = pet.Price;
+                petToUpdate.Name = pet.Name;
+                petToUpdate.Type = pet.Type;
+                petToUpdate.BirthDate = pet.BirthDate;
+                petToUpdate.SoldDate = pet.SoldDate;
+                petToUpdate.Color = pet.Color;
+                petToUpdate.Price = pet.Price;
             }
 
-            return PetToUpdate;
+            return petToUpdate;
         }
     }
 }

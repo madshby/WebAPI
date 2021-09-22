@@ -3,22 +3,22 @@ using PetShop.EFCore.Entities;
 
 namespace PetShop.EFCore
 {
-    public class PetShopDBContext : DbContext
+    public class PetShopDbContext : DbContext
     {
         public DbSet<InsuranceEntity> Insurance { get; set; }
         public DbSet<PetEntity> Pets { get; set; }
         public DbSet<OwnerEntity> Owners { get; set; }
 
-        public PetShopDBContext(DbContextOptions<PetShopDBContext> options) : base(options) {}
+        public PetShopDbContext(DbContextOptions<PetShopDbContext> options) : base(options) {}
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PetEntity>()
                 .HasOne(petEntity => petEntity.Insurance)
                 .WithMany(insuranceEntity => insuranceEntity.Pets);
-            //modelBuilder.Entity<OwnerEntity>()
-              //  .HasMany(oe => oe.Pet)
-                //.WithOne(pe => pe.)
+            modelBuilder.Entity<OwnerEntity>()
+                .HasMany(ownerEntity => ownerEntity.Pets)
+                .WithOne( petEntity => petEntity.Owner);
             
             modelBuilder.Entity<InsuranceEntity>()
                 .HasData(new InsuranceEntity() {Id = 1, Name = "BasicInsurance", Price = 99});

@@ -9,9 +9,9 @@ namespace PetShop.EFCore.Repositories
 {
     public class PetRepository : IPetRepositories
     {
-        private readonly PetShopDBContext _ctx;
+        private readonly PetShopDbContext _ctx;
 
-        public PetRepository(PetShopDBContext ctx)
+        public PetRepository(PetShopDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -70,6 +70,10 @@ namespace PetShop.EFCore.Repositories
             {
                 Id = pet.Id,
                 Name = pet.Name,
+                Type = pet.Type,
+                BirthDate = pet.BirthDate,
+                SoldDate = pet.SoldDate,
+                Color = pet.Color,
                 Price = pet.Price
             };
             var entity = _ctx.Update(petEntity).Entity;

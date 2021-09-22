@@ -9,7 +9,7 @@ namespace PetShop.Domain.Services
     public class PetService : IPetService
     {
         private IPetRepositories _repo;
-        private List<Pet> PetList = new List<Pet>();
+        private List<Pet> _petList = new List<Pet>();
 
         public PetService(IPetRepositories repo)
         {
@@ -24,8 +24,8 @@ namespace PetShop.Domain.Services
         public List<Pet> GetPetsByType(string searchedWords)
         {
             List<Pet> searchedPets = new List<Pet>();
-            PetList = GetAllPets();
-            foreach (var pet in PetList)
+            _petList = GetAllPets();
+            foreach (var pet in _petList)
             {
                 if (String.Equals(pet.Type.Name, searchedWords, StringComparison.CurrentCultureIgnoreCase))
                 {
