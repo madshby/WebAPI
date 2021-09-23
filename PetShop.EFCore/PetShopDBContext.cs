@@ -26,13 +26,6 @@ namespace PetShop.EFCore
                 .HasData(new InsuranceEntity() {Id = 2, Name = "PremiumInsurance", Price = 999});
             modelBuilder.Entity<InsuranceEntity>()
                 .HasData(new InsuranceEntity() {Id = 3, Name = "ProInsurance", Price = 9999});
-            
-            modelBuilder.Entity<PetEntity>()
-                .HasData(new PetEntity() {Id = 1, Name = "BasicInsurance", Price = 99});
-            modelBuilder.Entity<PetEntity>()
-                .HasData(new PetEntity() {Id = 2, Name = "PremiumInsurance", Price = 999});
-            modelBuilder.Entity<PetEntity>()
-                .HasData(new PetEntity() {Id = 3, Name = "ProInsurance", Price = 9999});
         }
     }
 }
