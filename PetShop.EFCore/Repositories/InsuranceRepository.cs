@@ -17,7 +17,7 @@ namespace PetShop.EFCore.Repositories
 
         public Insurance GetById(int id)
         {
-            return _ctx.Insurance
+            return _ctx.Insurances
                 .Select(ie =>new Insurance()
                 {
                     Id = ie.Id,
@@ -44,7 +44,7 @@ namespace PetShop.EFCore.Repositories
 
         public List<Insurance> ReadAll()
         {
-            return _ctx.Insurance
+            return _ctx.Insurances
                 .Select(insurance => new Insurance
                 {
                     Id = insurance.Id,

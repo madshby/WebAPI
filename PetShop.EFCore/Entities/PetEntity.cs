@@ -18,6 +18,8 @@ namespace PetShop.EFCore.Entities
         public int OwnerId { get; set; } 
         public OwnerEntity Owner { get; set; }
         public List<OwnerEntity> Owners { get; set; }
+        public PetTypeEntity PetType { get; set; }
+        public int PetTypeId { get; set; }
         
         
     }
