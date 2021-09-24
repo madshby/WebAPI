@@ -12,5 +12,7 @@ namespace PetShop.WebAPI.Dtos.Pets
         public DateTime SoldDate{ get; set; }
         public string Color{ get; set; }
         public double Price{ get; set; }
+        
+        public string InsuranceName { get; set; }
     }
 }

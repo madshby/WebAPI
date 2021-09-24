@@ -33,7 +33,8 @@ namespace PetShop.WebAPI.Controllers
                     BirthDate = pet.BirthDate,
                     SoldDate = pet.SoldDate,
                     Color = pet.Color,
-                    Price = pet.Price
+                    Price = pet.Price,
+                    InsuranceName = pet.Insurance.Name
                 }));
         }
 
@@ -45,7 +46,7 @@ namespace PetShop.WebAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Pet> CreatePet([FromBody]Pet pet)
+        public ActionResult<CreatePetDto> CreatePet([FromBody]Pet pet)
         {
             return Created($"https://localhost/api/Pet/{pet.Id}",_petService.Create(pet));
         }
