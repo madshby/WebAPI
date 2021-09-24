@@ -9,8 +9,6 @@ namespace PetShop.EFCore
         public DbSet<InsuranceEntity> Insurances { get; set; }
         public DbSet<PetEntity> Pets { get; set; }
         public DbSet<OwnerEntity> Owners { get; set; }
-        
-        public DbSet<PetTypeEntity> PetTypes { get; set; }
 
         public PetShopDbContext(DbContextOptions<PetShopDbContext> options) : base(options) {}
         
@@ -22,16 +20,16 @@ namespace PetShop.EFCore
                 .WithMany(insuranceEntity => insuranceEntity.Pets);
             
             //A Pet can have one PetType and a PetType can have many pets
-            modelBuilder.Entity<PetTypeEntity>()
-                .HasMany(petTypeEntity => petTypeEntity.Pets)
-                .WithOne(petEntity => petEntity.PetType);
+            modelBuilder.Entity<PetEntity>()
+                .HasOne(petEntity => petEntity.PetType)
+                .WithMany(petTypeEntity => petTypeEntity.Pets);
             
             //An Owner can have many pets, but pets can only have one owner
             modelBuilder.Entity<OwnerEntity>()
                 .HasMany(ownerEntity => ownerEntity.Pets)
                 .WithOne( petEntity => petEntity.Owner);
             
-            //Mock Data
+            //Mock Data Insurance
             modelBuilder.Entity<InsuranceEntity>()
                 .HasData(new InsuranceEntity() {Id = 1, Name = "BasicInsurance", Price = 99});
             modelBuilder.Entity<InsuranceEntity>()

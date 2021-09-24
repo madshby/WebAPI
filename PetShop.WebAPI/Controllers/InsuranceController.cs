@@ -27,7 +27,7 @@ namespace PetShop.WebAPI.Controllers
             {
                 return Ok(_insuranceService.GetById(id));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "Unexpected Error");
             }
@@ -40,7 +40,7 @@ namespace PetShop.WebAPI.Controllers
             {
                 return Ok(_insuranceService.CreateInsurance(insurance));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "Unexpected Error");
             }
@@ -53,7 +53,7 @@ namespace PetShop.WebAPI.Controllers
             {
                 return Ok(_insuranceService.ReadAll());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "Unexpected Error");
             }
@@ -66,7 +66,7 @@ namespace PetShop.WebAPI.Controllers
             {
                 return Ok(_insuranceService.DeleteInsuranceById(id));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "Unexpected Error");
             }
@@ -85,7 +85,7 @@ namespace PetShop.WebAPI.Controllers
 
                 return Ok(_insuranceService.PutInsurance(insurance));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "Unexpected Error");
             }

@@ -17,9 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DTO\Insurances" />
-      <Folder Include="DTO\Owners" />
-      <Folder Include="DTO\Pets" />
+      <Folder Include="Dtos\Insurances" />
+      <Folder Include="Dtos\Owners" />
+      <Folder Include="Dtos\PetTypes" />
     </ItemGroup>
 
 </Project>
