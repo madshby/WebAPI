@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Core.Filtering;
 using PetShop.Core.IServices;
 using PetShop.Core.Models;
 using PetShop.WebAPI.Dtos.Pets;
@@ -22,20 +23,31 @@ namespace PetShop.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<GetAllPetsDto>> GetAllPets()
+        public ActionResult<List<GetAllPetsDto>> GetAllPets([FromQuery] Filter filter)
         {
-            return Ok(_petService.GetAllPets()
-                .Select(pet => new GetAllPetsDto()
-                {
-                    Id = pet.Id,
-                    Name = pet.Name,
-                    PetTypeName = pet.Type.Name,
-                    BirthDate = pet.BirthDate,
-                    SoldDate = pet.SoldDate,
-                    Color = pet.Color,
-                    Price = pet.Price,
-                    InsuranceName = pet.Insurance.Name
-                }));
+            try
+            {
+                return Ok(_petService.GetAllPets(filter)
+                    .Select(pet => new GetAllPetsDto()
+                    {
+                        Id = pet.Id,
+                        Name = pet.Name,
+                        PetTypeName = pet.Type.Name,
+                        BirthDate = pet.BirthDate,
+                        SoldDate = pet.SoldDate,
+                        Color = pet.Color,
+                        Price = pet.Price,
+                        InsuranceName = pet.Insurance.Name
+                    }));
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Technical Difficulties");
+            }
         }
 
         [HttpGet("{id}")]
